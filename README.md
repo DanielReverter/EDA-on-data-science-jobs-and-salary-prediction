@@ -2,7 +2,7 @@
 
 ## Summary
 
-The objective of this project is simple: to get a better grasp on the current market for data related jobs worldwide. This is done in 2 steps: In the first one, a comprehensive EDA (Exploratory Data Analysis) is performed using multiple visualization tools to help the reader follow along. Pretty much all aspects regarding data related jobs that can be analyzed are (experience level of employee, job title, company location, salary and many more) but the focus of the EDA lies on the job salaries. To further understand the market, some machine learning techniques are used to create a predictive model for those salaries. The predictive model is then deployed online so anyone can use it without having to meddle with the code.
+The objective of this project is simple: to get a better grasp on the current market for data related jobs worldwide. This is done in 2 steps: In the first one, a comprehensive EDA (Exploratory Data Analysis) is performed using multiple visualization tools to help the reader follow along. Pretty much all aspects regarding data related jobs that can be analyzed are: experience level of employee, job title, company location, salary and many more, but the focus of the EDA lies on the job salaries. To further understand the market, some machine learning techniques are used to create a predictive model for those salaries. The predictive model is then deployed online so anyone can use it without having to understand the code.
 
 ## Data
 
@@ -54,9 +54,9 @@ EDA can be divided into two main parts:
 
 (Main file: [Cleaning](https://github.com/DanielReverter/EDA-on-data-science-jobs-and-salary-prediction/blob/main/EDA%20-%20Cleaning.ipynb))
 
-Data is pretty much ready to analyze: There is no missing data and each column values are already standarized. Only 2 things are modified:
+Data is almost ready to analyze: There is no missing data and each column values are already standarized. Only 2 things are modified:
 
-- Abreviations are changed to their actual meaning for extra clarity (for example EN --> Junior).
+- Abbreviations are changed to their actual meaning for extra clarity (for example EN --> Junior).
 - "salary" and "salary_currency" columns are dropped. "salary_in_usd" is used as the only salary column for better comparisons.
 
 ### Analysis
@@ -67,7 +67,7 @@ The analysis is split in 2 parts:
 
 - Univariate analysis:
 
-    Each column is analyzed individually. A selfexplaining graph of the variable is plotted using Tableau followed by a brief commentary. An example would be:
+    Each column is analyzed individually. A self-explanatory graph of the variable is plotted using Tableau followed by a brief commentary. An example would be:
 
     *Salary (USD)*
     <div>
@@ -77,7 +77,7 @@ The analysis is split in 2 parts:
     <img src="Images/Salary_2.png" width="1000"/>
     </div>
 
-    *The first graph shows that there is a large number of outliers in the dataset. The maximum salary is 900k$ per year!*
+    *The first graph shows that there are a large number of outliers in the dataset. The maximum salary is 900k$ per year!*
 
     *The second graph is the same boxplot as the first with the outliers filtered out, to make it easier to understand. There it is shown that half of all the salaries are between 57k\$ and 143k\$ (first and third quartiles), with the median being at around 95k\$.*
 
@@ -100,17 +100,17 @@ The analysis is split in 2 parts:
 
 A predictive model (specifically a decision tree) is created using machine learning algorithms. 
 
-First, data is cleaned again (salary and salary_currency are now used instead of salary_in_usd, and some categorization is made on countries and job titles).
+First, data is cleaned again (salary and salary_currency are now used instead of salary_in_usd, and some categorization is performed on countries and job titles).
 
-Then, a decision tree regression is performed using the sklearn module in order to create a decision tree that tries to predict salary given all the other variables. The model is tested on the 20% of the data that we didn't use to train the model, giving a final score of 0.9946.
+Then, a decision tree regression is performed using the sklearn module in order to create a decision tree that tries to predict salary, given all other variables. The model is tested on the 20% of the data that we didn't use to train the model, giving a final score of 0.9946.
 
 The model is saved using the pickle module in the folder Predictive_model ([link](https://github.com/DanielReverter/EDA-on-data-science-jobs-and-salary-prediction/tree/main/Predictive_model)).
 
 ## Deployment
 
-(App's link: [Streamlit app](https://danielreverter-eda-on-data-scien-predictive-appstreamlit-nldbj1.streamlitapp.com/))
+(App's link: [Streamlit app](https://danielreverter-eda-on-data-scien-predictive-appstreamlit-7su49x.streamlitapp.com/))
 
-In order for anyone to use this code (for example, a person looking for a job in data gets a job offer but doesn't know what salary it should be asking for. Or an employer wants to know how much they should be offering), an app is created where anyone can input all variables but the salary regarding a data related job and the app runs the previously mentioned predictive model and outputs the predicted salary. The app looks like this:
+In order for anyone to use this code (for example, a person looking for a job in data who has a job offer but doesn't know what salary they should be asking for or an employer who wants to know how much they should be offering) an app is created where anyone can input all variables except the salary. The app runs the previously mentioned predictive model and outputs the predicted salary. The app looks like this:
 <div>
     <img src="Images/app_example.png" width="500">
 </div>
